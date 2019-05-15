@@ -1,0 +1,1447 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Penjelasan Tentang K-Means Clustering And K-Nearest neighbor">
+      
+      
+        <link rel="canonical" href="https://khairulanwar96.github.io/170441100058-khairul/extensions/codehilite/">
+      
+      
+        <meta name="author" content="M.Khairul Anwar">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>CodeHilite - K-Means Clustering And K-Nearest neighbor</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "None", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#codehilite" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://khairulanwar96.github.io/170441100058-khairul/" title="K-Means Clustering And K-Nearest neighbor" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              K-Means Clustering And K-Nearest neighbor
+            </span>
+            <span class="md-header-nav__topic">
+              CodeHilite
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/khairulanwar96/170441100058-khairul" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    khairulanwar96/170441100058-khairul
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="K-Means data padi" class="md-tabs__link md-tabs__link--active">
+        K-Means data padi
+      </a>
+    
+  </li>
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://khairulanwar96.github.io/170441100058-khairul/" title="K-Means Clustering And K-Nearest neighbor" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    K-Means Clustering And K-Nearest neighbor
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/khairulanwar96/170441100058-khairul" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    khairulanwar96/170441100058-khairul
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="K-Means data padi" class="md-nav__link">
+      K-Means data padi
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../knn/" title="KNN data gender" class="md-nav__link">
+      KNN data gender
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" title="Installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" title="Usage" class="md-nav__link">
+    Usage
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#specifying-the-language" title="Specifying the language" class="md-nav__link">
+    Specifying the language
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#via-markdown-syntax-recommended" title="via Markdown syntax recommended" class="md-nav__link">
+    via Markdown syntax recommended
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#via-shebang" title="via Shebang" class="md-nav__link">
+    via Shebang
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#via-three-colons" title="via three colons" class="md-nav__link">
+    via three colons
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-line-numbers" title="Adding line numbers" class="md-nav__link">
+    Adding line numbers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grouping-code-blocks" title="Grouping code blocks" class="md-nav__link">
+    Grouping code blocks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#highlighting-specific-lines" title="Highlighting specific lines" class="md-nav__link">
+    Highlighting specific lines
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-languages-excerpt" title="Supported languages excerpt" class="md-nav__link">
+    Supported languages excerpt
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bash" title="Bash" class="md-nav__link">
+    Bash
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" title="C" class="md-nav__link">
+    C
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_1" title="C++" class="md-nav__link">
+    C++
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c35" title="C&#35;" class="md-nav__link">
+    C&#35;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clojure" title="Clojure" class="md-nav__link">
+    Clojure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diff" title="Diff" class="md-nav__link">
+    Diff
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docker" title="Docker" class="md-nav__link">
+    Docker
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elixir" title="Elixir" class="md-nav__link">
+    Elixir
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#erlang" title="Erlang" class="md-nav__link">
+    Erlang
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#f35" title="F&#35;" class="md-nav__link">
+    F&#35;
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#go" title="Go" class="md-nav__link">
+    Go
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#html" title="HTML" class="md-nav__link">
+    HTML
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#java" title="Java" class="md-nav__link">
+    Java
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript" title="JavaScript" class="md-nav__link">
+    JavaScript
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#json" title="JSON" class="md-nav__link">
+    JSON
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#julia" title="Julia" class="md-nav__link">
+    Julia
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lua" title="Lua" class="md-nav__link">
+    Lua
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mysql" title="MySQL" class="md-nav__link">
+    MySQL
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#php" title="PHP" class="md-nav__link">
+    PHP
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-buffers" title="Protocol Buffers" class="md-nav__link">
+    Protocol Buffers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#python" title="Python" class="md-nav__link">
+    Python
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ruby" title="Ruby" class="md-nav__link">
+    Ruby
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xml" title="XML" class="md-nav__link">
+    XML
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="codehilite">CodeHilite<a class="headerlink" href="#codehilite" title="Permanent link">&para;</a></h1>
+<p><a href="https://python-markdown.github.io/extensions/code_hilite/">CodeHilite</a> is an extension that adds syntax highlighting to code blocks
+and is included in the standard Markdown library. The highlighting process is
+executed during compilation of the Markdown file.</p>
+<div class="admonition failure">
+<p class="admonition-title">Syntax highlighting not working?</p>
+<p>Please ensure that <a href="http://pygments.org">Pygments</a> is installed. See the next section for
+further directions on how to set up Pygments or use the official
+<a href="https://hub.docker.com/r/squidfunk/mkdocs-material/">Docker image</a> with all dependencies pre-installed.</p>
+</div>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>CodeHilite parses code blocks and wraps them in <code>pre</code> tags. If <a href="http://pygments.org">Pygments</a>
+is installed, which is a generic syntax highlighter with support for over
+<a href="http://pygments.org/languages">300 languages</a>, CodeHilite will also highlight the code block. Pygments can
+be installed with the following command:</p>
+<pre class="codehilite"><code class="language-sh">pip install pygments</code></pre>
+
+<p>To enable CodeHilite, add the following lines to your <code>mkdocs.yml</code>:</p>
+<pre class="codehilite"><code class="language-yaml">markdown_extensions:
+  - codehilite</code></pre>
+
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="specifying-the-language">Specifying the language<a class="headerlink" href="#specifying-the-language" title="Permanent link">&para;</a></h3>
+<p>The CodeHilite extension uses the same syntax as regular Markdown code blocks,
+but needs to know the language of the code block. This can be done in three
+different ways.</p>
+<h4 id="via-markdown-syntax-recommended">via Markdown syntax <small>recommended</small><a class="headerlink" href="#via-markdown-syntax-recommended" title="Permanent link">&para;</a></h4>
+<p>In Markdown, code blocks can be opened and closed by writing three backticks on
+separate lines. To add code highlighting to those blocks, the easiest way is
+to specify the language directly after the opening block.</p>
+<p>Example:</p>
+<pre class="codehilite"><code class="language-markdown">``` python
+import tensorflow as tf
+```</code></pre>
+
+<p>Result:</p>
+<pre class="codehilite"><code class="language-python">import tensorflow as tf</code></pre>
+
+<h4 id="via-shebang">via Shebang<a class="headerlink" href="#via-shebang" title="Permanent link">&para;</a></h4>
+<p>Alternatively, if the first line of a code block contains a shebang, the
+language is derived from the path referenced in the shebang. This will only
+work for code blocks that are indented using four spaces, not for those
+encapsulated in three backticks.</p>
+<p>Example:</p>
+<pre class="codehilite"><code class="language-markdown">    #!/usr/bin/python
+    import tensorflow as tf</code></pre>
+
+<p>Result:</p>
+<pre class="codehilite"><code class="language-python">#!/usr/bin/python
+import tensorflow as tf</code></pre>
+
+<h4 id="via-three-colons">via three colons<a class="headerlink" href="#via-three-colons" title="Permanent link">&para;</a></h4>
+<p>If the first line starts with three colons followed by a language identifier,
+the first line is stripped. This will only work for code blocks that are
+indented using four spaces, not for those encapsulated in three backticks.</p>
+<p>Example:</p>
+<pre class="codehilite"><code class="language-markdown">    :::python
+    import tensorflow as tf</code></pre>
+
+<p>Result:</p>
+<pre class="codehilite"><code class="language-python">import tensorflow as tf</code></pre>
+
+
+<h3 id="adding-line-numbers">Adding line numbers<a class="headerlink" href="#adding-line-numbers" title="Permanent link">&para;</a></h3>
+<p>Line numbers can be added by enabling the <code>linenums</code> flag in your <code>mkdocs.yml</code>:</p>
+<pre class="codehilite"><code class="language-yaml">markdown_extensions:
+  - codehilite:
+      linenums: true</code></pre>
+
+<p>Example:</p>
+<pre class="codehilite"><code class="language-markdown">``` python
+""" Bubble sort """
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] &gt; items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```</code></pre>
+
+<p>Result:</p>
+<pre class="codehilite"><code class="language-python linenums">&quot;&quot;&quot; Bubble sort &quot;&quot;&quot;
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] &gt; items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]</code></pre>
+
+
+<h3 id="grouping-code-blocks">Grouping code blocks<a class="headerlink" href="#grouping-code-blocks" title="Permanent link">&para;</a></h3>
+<p>The <a href="https://facelessuser.github.io/pymdown-extensions/extensions/superfences/">SuperFences</a> extension which is part of the <a href="https://facelessuser.github.io/pymdown-extensions">PyMdown Extensions</a>
+package adds support for grouping code blocks with tabs. This is especially
+useful for documenting projects with multiple language bindings.</p>
+<p>Example:</p>
+<pre class="codehilite"><code>``` bash tab="Bash"
+#!/bin/bash
+
+echo "Hello world!"
+```
+
+``` c tab="C"
+#include &lt;stdio.h&gt;
+
+int main(void) {
+  printf("Hello world!\n");
+}
+```
+
+``` c++ tab="C++"
+#include &lt;iostream&gt;
+
+int main() {
+  std::cout &lt;&lt; "Hello world!" &lt;&lt; std::endl;
+  return 0;
+}
+```
+
+``` c# tab="C#"
+using System;
+
+class Program {
+  static void Main(string[] args) {
+    Console.WriteLine("Hello world!");
+  }
+}
+```</code></pre>
+
+<p>Result:</p>
+<div class="superfences-tabs">
+<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
+<label for="__tab_1_0">Bash</label>
+<div class="superfences-content"><pre class="codehilite"><code class="language-bash">#!/bin/bash
+
+echo "Hello world!"</code></pre></div>
+<input name="__tabs_1" type="radio" id="__tab_1_1" />
+<label for="__tab_1_1">C</label>
+<div class="superfences-content"><pre class="codehilite"><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void) {
+  printf("Hello world!\n");
+}</code></pre></div>
+<input name="__tabs_1" type="radio" id="__tab_1_2" />
+<label for="__tab_1_2">C++</label>
+<div class="superfences-content"><pre class="codehilite"><code class="language-c++">#include &lt;iostream&gt;
+
+int main() {
+  std::cout &lt;&lt; "Hello world!" &lt;&lt; std::endl;
+  return 0;
+}</code></pre></div>
+<input name="__tabs_1" type="radio" id="__tab_1_3" />
+<label for="__tab_1_3">C#</label>
+<div class="superfences-content"><pre class="codehilite"><code class="language-c#">using System;
+
+class Program {
+  static void Main(string[] args) {
+    Console.WriteLine("Hello world!");
+  }
+}</code></pre></div>
+</div>
+<h3 id="highlighting-specific-lines">Highlighting specific lines<a class="headerlink" href="#highlighting-specific-lines" title="Permanent link">&para;</a></h3>
+<p>Specific lines can be highlighted by passing the line numbers to the <code>hl_lines</code>
+argument placed right after the language identifier. Line counts start at 1.</p>
+<p>Example:</p>
+<pre class="codehilite"><code class="language-markdown">``` python hl_lines="3 4"
+""" Bubble sort """
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] &gt; items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]
+```</code></pre>
+
+<p>Result:</p>
+<pre class="codehilite"><code class="language-python linenums">&quot;&quot;&quot; Bubble sort &quot;&quot;&quot;
+def bubble_sort(items):
+    for i in range(len(items)):
+        for j in range(len(items) - 1 - i):
+            if items[j] &gt; items[j + 1]:
+                items[j], items[j + 1] = items[j + 1], items[j]</code></pre>
+
+
+<h2 id="supported-languages-excerpt">Supported languages <small>excerpt</small><a class="headerlink" href="#supported-languages-excerpt" title="Permanent link">&para;</a></h2>
+<p>CodeHilite uses <a href="http://pygments.org">Pygments</a>, a generic syntax highlighter with support for
+over <a href="https://hub.docker.com/r/squidfunk/mkdocs-material/">300 languages</a>, so the following list of examples is just an excerpt.</p>
+<h3 id="bash">Bash<a class="headerlink" href="#bash" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-bash">#!/bin/bash
+
+for OPT in "$@"
+do
+  case "$OPT" in
+    '-f' )  canonicalize=1 ;;
+    '-n' )  switchlf="-n" ;;
+  esac
+done
+
+# readlink -f
+function __readlink_f {
+  target="$1"
+  while test -n "$target"; do
+    filepath="$target"
+    cd `dirname "$filepath"`
+    target=`readlink "$filepath"`
+  done
+  /bin/echo $switchlf `pwd -P`/`basename "$filepath"`
+}
+
+if [ ! "$canonicalize" ]; then
+  readlink $switchlf "$@"
+else
+  for file in "$@"
+  do
+    case "$file" in
+      -* )  ;;
+      *  )  __readlink_f "$file" ;;
+    esac
+    done
+fi
+
+exit $?</code></pre>
+
+<h3 id="c">C<a class="headerlink" href="#c" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-c">extern size_t
+pb_varint_scan(const uint8_t data[], size_t left) {
+  assert(data &amp;&amp; left);
+  left = left &gt; 10 ? 10 : left;
+
+#ifdef __SSE2__
+
+  /* Mapping: remaining bytes ==&gt; bitmask */
+  static const int mask_map[] = {
+    0x0000, 0x0001, 0x0003, 0x0007,
+    0x000F, 0x001F, 0x003F, 0x007F,
+    0x00FF, 0x01FF, 0x03FF
+  };
+
+  /* Load buffer into 128-bit integer and create high-bit mask */
+  __m128i temp = _mm_loadu_si128((const __m128i *)data);
+  __m128i high = _mm_set1_epi8(0x80);
+
+  /* Intersect and extract mask with high-bits set */
+  int mask = _mm_movemask_epi8(_mm_and_si128(temp, high));
+  mask = (mask &amp; mask_map[left]) ^ mask_map[left];
+
+  /* Count trailing zeroes */
+  return mask ? __builtin_ctz(mask) + 1 : 0;
+
+#else
+
+  /* Linear scan */
+  size_t size = 0;
+  while (data[size++] &amp; 0x80)
+    if (!--left)
+      return 0;
+  return size;
+
+#endif /* __SSE2__ */
+
+}</code></pre>
+
+<h3 id="c_1">C++<a class="headerlink" href="#c_1" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-cpp">Extension::
+Extension(const Descriptor *descriptor, const Descriptor *scope) :
+    descriptor_(descriptor),
+    scope_(scope) {
+
+  /* Extract full name for signature */
+  variables_["signature"] = descriptor_-&gt;full_name();
+
+  /* Prepare message symbol */
+  variables_["message"] = StringReplace(
+    variables_["signature"], ".", "_", true);
+  LowerString(&amp;(variables_["message"]));
+
+  /* Suffix scope to identifiers, if given */
+  string suffix ("");
+  if (scope_) {
+    suffix = scope_-&gt;full_name();
+
+    /* Check if the base and extension types are in the same package */
+    if (!scope_-&gt;file()-&gt;package().compare(descriptor_-&gt;file()-&gt;package()))
+      suffix = StripPrefixString(suffix,
+        scope_-&gt;file()-&gt;package() + ".");
+
+    /* Append to signature */
+    variables_["signature"] += ".[" + suffix +"]";
+    suffix = "_" + suffix;
+  }
+
+  /* Prepare extension symbol */
+  variables_["extension"] = StringReplace(
+    suffix, ".", "_", true);
+  LowerString(&amp;(variables_["extension"]));
+}</code></pre>
+
+<h3 id="c35">C&amp;<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/35" title="GitHub Issue: squidfunk/mkdocs-material#35">#35</a>;<a class="headerlink" href="#c35" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-csharp">public static void Send(
+    Socket socket, byte[] buffer, int offset, int size, int timeout) {
+  int startTickCount = Environment.TickCount;
+  int sent = 0;
+  do {
+    if (Environment.TickCount &gt; startTickCount + timeout)
+      throw new Exception("Timeout.");
+    try {
+      sent += socket.Send(buffer, offset + sent,
+        size - sent, SocketFlags.None);
+    } catch (SocketException ex) {
+      if (ex.SocketErrorCode == SocketError.WouldBlock ||
+          ex.SocketErrorCode == SocketError.IOPending ||
+          ex.SocketErrorCode == SocketError.NoBufferSpaceAvailable) {
+        /* Socket buffer is probably full, wait and try again */
+        Thread.Sleep(30);
+      } else {
+        throw ex;
+      }
+    }
+  } while (sent &lt; size);
+}</code></pre>
+
+<h3 id="clojure">Clojure<a class="headerlink" href="#clojure" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-clojure">(clojure-version)
+
+(defn partition-when
+  [f]
+  (fn [rf]
+    (let [a (java.util.ArrayList.)
+          fval (volatile! false)]
+      (fn
+        ([] (rf))
+        ([result]
+           (let [result (if (.isEmpty a)
+                          result
+                          (let [v (vec (.toArray a))]
+                            ;; Clear first
+                            (.clear a)
+                            (unreduced (rf result v))))]
+             (rf result)))
+        ([result input]
+            (if-not (and (f input)  @fval)
+               (do
+                 (vreset! fval true)
+                 (.add a input)
+                 result)
+               (let [v (vec (.toArray a))]
+                 (.clear a)
+                 (let [ret (rf result v)]
+                   (when-not (reduced? ret)
+                     (.add a input))
+                   ret))))))))
+
+
+(into [] (partition-when
+          #(.startsWith % "&gt;&gt;"))
+          ["1d" "33" "&gt;&gt; 1" "&gt;&gt; 2" "22" "&gt;&gt; 3"])</code></pre>
+
+<h3 id="diff">Diff<a class="headerlink" href="#diff" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-diff">Index: grunt.js
+===================================================================
+--- grunt.js    (revision 31200)
++++ grunt.js    (working copy)
+@@ -12,6 +12,7 @@
+
+ module.exports = function (grunt) {
+
++  console.log('hello world');
+   // Project configuration.
+   grunt.initConfig({
+     lint: {
+@@ -19,10 +20,6 @@
+         'packages/services.web/{!(test)/**/,}*.js',
+         'packages/error/**/*.js'
+       ],
+-      scripts: [
+-        'grunt.js',
+-        'db/**/*.js'
+-      ],
+       browser: [
+         'packages/web/server.js',
+         'packages/web/server/**/*.js',</code></pre>
+
+<h3 id="docker">Docker<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-docker">FROM ubuntu
+
+# Install vnc, xvfb in order to create a 'fake' display and firefox
+RUN apt-get update &amp;&amp; apt-get install -y x11vnc xvfb firefox
+RUN mkdir ~/.vnc
+
+# Setup a password
+RUN x11vnc -storepasswd 1234 ~/.vnc/passwd
+
+# Autostart firefox (might not be the best way, but it does the trick)
+RUN bash -c 'echo "firefox" &gt;&gt; /.bashrc'
+
+EXPOSE 5900
+CMD ["x11vnc", "-forever", "-usepw", "-create"]</code></pre>
+
+<h3 id="elixir">Elixir<a class="headerlink" href="#elixir" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-elixir">require Logger
+
+def accept(port) do
+  {:ok, socket} = :gen_tcp.listen(port,
+                    [:binary, packet: :line, active: false, reuseaddr: true])
+  Logger.info "Accepting connections on port #{port}"
+  loop_acceptor(socket)
+end
+
+defp loop_acceptor(socket) do
+  {:ok, client} = :gen_tcp.accept(socket)
+  serve(client)
+  loop_acceptor(socket)
+end
+
+defp serve(socket) do
+  socket
+  |&gt; read_line()
+  |&gt; write_line(socket)
+
+  serve(socket)
+end
+
+defp read_line(socket) do
+  {:ok, data} = :gen_tcp.recv(socket, 0)
+  data
+end
+
+defp write_line(line, socket) do
+  :gen_tcp.send(socket, line)
+end</code></pre>
+
+<h3 id="erlang">Erlang<a class="headerlink" href="#erlang" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-erlang">circular(Defs) -&gt;
+  [ { { Type, Base }, Fields } ||
+    { { Type, Base }, Fields } &lt;- Defs, Type == msg, circular(Base, Defs) ].
+
+circular(Base, Defs) -&gt;
+  Fields = proplists:get_value({ msg, Base }, Defs),
+  circular(Defs, Fields, [Base]).
+
+circular(_Defs, [], _Path) -&gt;
+  false;
+circular(Defs, [Field | Fields], Path) -&gt;
+  case Field#field.type of
+    { msg, Type } -&gt;
+      case lists:member(Type, Path) of
+        false -&gt;
+          Children = proplists:get_value({ msg, Type }, Defs),
+          case circular(Defs, Children, [Type | Path]) of
+            false -&gt; circular(Defs, Fields, Path);
+            true  -&gt; true
+          end;
+        true -&gt;
+          Type == lists:last(Path) andalso
+            (length(Path) == 1 orelse not is_tree(Path))
+      end;
+    _ -&gt;
+      circular(Defs, Fields, Path)
+  end.</code></pre>
+
+<h3 id="f35">F&amp;<a class="magiclink magiclink-github magiclink-issue" href="https://github.com/squidfunk/mkdocs-material/issues/35" title="GitHub Issue: squidfunk/mkdocs-material#35">#35</a>;<a class="headerlink" href="#f35" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-fsharp">/// Asynchronously download retangles from the server
+/// and decode the JSON format to F# Rectangle record
+let [&lt;Js&gt;] getRectangles () : Async&lt;Rectangle[]&gt; = async {
+  let req = XMLHttpRequest()
+  req.Open("POST", "/get", true)
+  let! resp = req.AsyncSend()
+  return JSON.parse(resp) }
+
+/// Repeatedly update rectangles after 0.5 sec
+let [&lt;Js&gt;] updateLoop () = async {
+  while true do
+    do! Async.Sleep(500)
+    let! rects = getRectangles()
+    cleanRectangles()
+    rects |&gt; Array.iter createRectangle }</code></pre>
+
+<h3 id="go">Go<a class="headerlink" href="#go" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-go">package main
+
+import "fmt"
+
+func counter(id int, channel chan int, closer bool) {
+  for i := 0; i &lt; 10000000; i++ {
+    fmt.Println("process", id," send", i)
+    channel &lt;- 1
+  }
+  if closer { close(channel ) }
+}
+
+func main() {
+  channel := make(chan int)
+  go counter(1, channel, false)
+  go counter(2, channel, true)
+
+  x := 0
+
+  // receiving data from channel
+  for i := range channel {
+    fmt.Println("receiving")
+    x += i
+  }
+
+  fmt.Println(x)
+}</code></pre>
+
+<h3 id="html">HTML<a class="headerlink" href="#html" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-html">&lt;!doctype html&gt;
+&lt;html class="no-js" lang=""&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta http-equiv="x-ua-compatible" content="ie=edge"&gt;
+    &lt;title&gt;HTML5 Boilerplate&lt;/title&gt;
+    &lt;meta name="description" content=""&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+    &lt;link rel="apple-touch-icon" href="apple-touch-icon.png"&gt;
+    &lt;link rel="stylesheet" href="css/normalize.css"&gt;
+    &lt;link rel="stylesheet" href="css/main.css"&gt;
+    &lt;script src="js/vendor/modernizr-2.8.3.min.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;Hello world! This is HTML5 Boilerplate.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<h3 id="java">Java<a class="headerlink" href="#java" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-java">import java.util.LinkedList;
+import java.lang.reflect.Array;
+
+public class UnsortedHashSet&lt;E&gt; {
+
+  private static final double LOAD_FACTOR_LIMIT = 0.7;
+
+  private int size;
+  private LinkedList&lt;E&gt;[] con;
+
+  public UnsortedHashSet() {
+    con  = (LinkedList&lt;E&gt;[])(new LinkedList[10]);
+  }
+
+  public boolean add(E obj) {
+    int oldSize = size;
+    int index = Math.abs(obj.hashCode()) % con.length;
+    if (con[index] == null)
+      con[index] = new LinkedList&lt;E&gt;();
+    if (!con[index].contains(obj)) {
+      con[index].add(obj);
+      size++;
+    }
+    if (1.0 * size / con.length &gt; LOAD_FACTOR_LIMIT)
+      resize();
+    return oldSize != size;
+  }
+
+  private void resize() {
+    UnsortedHashSet&lt;E&gt; temp = new UnsortedHashSet&lt;E&gt;();
+    temp.con = (LinkedList&lt;E&gt;[])(new LinkedList[con.length * 2 + 1]);
+    for (int i = 0; i &lt; con.length; i++) {
+      if (con[i] != null)
+        for (E e : con[i])
+          temp.add(e);
+    }
+    con = temp.con;
+  }
+
+  public int size() {
+    return size;
+  }
+}</code></pre>
+
+<h3 id="javascript">JavaScript<a class="headerlink" href="#javascript" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-javascript">var Math = require('lib/math');
+
+var _extends = function (target) {
+  for (var i = 1; i &lt; arguments.length; i++) {
+    var source = arguments[i];
+    for (var key in source) {
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+};
+
+var e = exports.e = 2.71828182846;
+exports['default'] = function (x) {
+  return Math.exp(x);
+};
+
+module.exports = _extends(exports['default'], exports);</code></pre>
+
+<h3 id="json">JSON<a class="headerlink" href="#json" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-json">{
+  "name": "mkdocs-material",
+  "version": "0.2.4",
+  "description": "A Material Design theme for MkDocs",
+  "homepage": "http://squidfunk.github.io/mkdocs-material/",
+  "authors": [
+    "squidfunk &lt;martin.donath@squidfunk.com&gt;"
+  ],
+  "license": "MIT",
+  "main": "Gulpfile.js",
+  "scripts": {
+    "start": "./node_modules/.bin/gulp watch --mkdocs",
+    "build": "./node_modules/.bin/gulp build --production"
+  }
+  ...
+}</code></pre>
+
+<h3 id="julia">Julia<a class="headerlink" href="#julia" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-julia">using MXNet
+
+mlp = @mx.chain mx.Variable(:data)             =&gt;
+  mx.FullyConnected(name=:fc1, num_hidden=128) =&gt;
+  mx.Activation(name=:relu1, act_type=:relu)   =&gt;
+  mx.FullyConnected(name=:fc2, num_hidden=64)  =&gt;
+  mx.Activation(name=:relu2, act_type=:relu)   =&gt;
+  mx.FullyConnected(name=:fc3, num_hidden=10)  =&gt;
+  mx.SoftmaxOutput(name=:softmax)
+
+# data provider
+batch_size = 100
+include(Pkg.dir("MXNet", "examples", "mnist", "mnist-data.jl"))
+train_provider, eval_provider = get_mnist_providers(batch_size)
+
+# setup model
+model = mx.FeedForward(mlp, context=mx.cpu())
+
+# optimization algorithm
+optimizer = mx.SGD(lr=0.1, momentum=0.9)
+
+# fit parameters
+mx.fit(model, optimizer, train_provider, n_epoch=20, eval_data=eval_provider)</code></pre>
+
+<h3 id="lua">Lua<a class="headerlink" href="#lua" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-lua">local ffi = require("ffi")
+
+ffi.cdef[[
+  void Sleep(int ms);
+  int poll(struct pollfd *fds, unsigned long nfds, int timeout);
+]]
+
+local sleep
+if ffi.os == "Windows" then
+  function sleep(s)
+    ffi.C.Sleep(s*1000)
+  end
+else
+  function sleep(s)
+    ffi.C.poll(nil, 0, s * 1000)
+  end
+end
+
+for i = 1,160 do
+  io.write("."); io.flush()
+  sleep(0.01)
+end
+io.write("\n")</code></pre>
+
+<h3 id="mysql">MySQL<a class="headerlink" href="#mysql" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-mysql">SELECT
+  Employees.EmployeeID,
+  Employees.Name,
+  Employees.Salary,
+  Manager.Name AS Manager
+FROM
+  Employees
+LEFT JOIN
+  Employees AS Manager
+ON
+  Employees.ManagerID = Manager.EmployeeID
+WHERE
+  Employees.EmployeeID = '087652';</code></pre>
+
+<h3 id="php">PHP<a class="headerlink" href="#php" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-php">&lt;?php
+
+// src/AppBundle/Controller/LuckyController.php
+namespace AppBundle\Controller;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
+
+class LuckyController {
+
+  /**
+   * @Route("/lucky/number")
+   */
+  public function numberAction() {
+    $number = mt_rand(0, 100);
+
+    return new Response(
+      '&lt;html&gt;&lt;body&gt;Lucky number: '.$number.'&lt;/body&gt;&lt;/html&gt;'
+    );
+  }
+}</code></pre>
+
+<h3 id="protocol-buffers">Protocol Buffers<a class="headerlink" href="#protocol-buffers" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-proto">syntax = "proto2";
+
+package caffe;
+
+// Specifies the shape (dimensions) of a Blob.
+message BlobShape {
+  repeated int64 dim = 1 [packed = true];
+}
+
+message BlobProto {
+  optional BlobShape shape = 7;
+  repeated float data = 5 [packed = true];
+  repeated float diff = 6 [packed = true];
+
+  // 4D dimensions -- deprecated.  Use "shape" instead.
+  optional int32 num = 1 [default = 0];
+  optional int32 channels = 2 [default = 0];
+  optional int32 height = 3 [default = 0];
+  optional int32 width = 4 [default = 0];
+}</code></pre>
+
+<h3 id="python">Python<a class="headerlink" href="#python" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-python">
+"""
+  A very simple MNIST classifier.
+  See extensive documentation at
+  http://tensorflow.org/tutorials/mnist/beginners/index.md
+"""
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+
+# Import data
+from tensorflow.examples.tutorials.mnist import input_data
+
+import tensorflow as tf
+
+flags = tf.app.flags
+FLAGS = flags.FLAGS
+flags.DEFINE_string('data_dir', '/tmp/data/', 'Directory for storing data')
+
+mnist = input_data.read_data_sets(FLAGS.data_dir, one_hot=True)
+
+sess = tf.InteractiveSession()
+
+# Create the model
+x = tf.placeholder(tf.float32, [None, 784])
+W = tf.Variable(tf.zeros([784, 10]))
+b = tf.Variable(tf.zeros([10]))
+y = tf.nn.softmax(tf.matmul(x, W) + b)</code></pre>
+
+<h3 id="ruby">Ruby<a class="headerlink" href="#ruby" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-ruby">require 'finity/event'
+require 'finity/machine'
+require 'finity/state'
+require 'finity/transition'
+require 'finity/version'
+
+module Finity
+  class InvalidCallback &lt; StandardError; end
+  class MissingCallback &lt; StandardError; end
+  class InvalidState    &lt; StandardError; end
+
+  # Class methods to be injected into the including class upon inclusion.
+  module ClassMethods
+
+    # Instantiate a new state machine for the including class by accepting a
+    # block with state and event (and subsequent transition) definitions.
+    def finity options = {}, &amp;block
+      @finity ||= Machine.new self, options, &amp;block
+    end
+
+    # Return the names of all registered states.
+    def states
+      @finity.states.map { |name, _| name }
+    end
+
+    # Return the names of all registered events.
+    def events
+      @finity.events.map { |name, _| name }
+    end
+  end
+
+  # Inject methods into the including class upon inclusion.
+  def self.included base
+    base.extend ClassMethods
+  end
+end</code></pre>
+
+<h3 id="xml">XML<a class="headerlink" href="#xml" title="Permanent link">&para;</a></h3>
+<pre class="codehilite"><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE mainTag SYSTEM "some.dtd" [ENTITY % entity]&gt;
+&lt;?oxygen RNGSchema="some.rng" type="xml"?&gt;
+&lt;xs:main-Tag xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;!-- This is a sample comment --&gt;
+  &lt;childTag attribute="Quoted Value" another-attribute='Single quoted value'
+      a-third-attribute='123'&gt;
+    &lt;withTextContent&gt;Some text content&lt;/withTextContent&gt;
+    &lt;withEntityContent&gt;Some text content with &amp;lt;entities&amp;gt; and
+      mentioning uint8_t and int32_t&lt;/withEntityContent&gt;
+    &lt;otherTag attribute='Single quoted Value'/&gt;
+  &lt;/childTag&gt;
+  &lt;![CDATA[ some CData ]]&gt;
+&lt;/main-Tag&gt;</code></pre>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 M.Khairul Anwar
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/khairulanwar96" class="md-footer-social__link fa fa-github-alt"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.8c0d971c.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

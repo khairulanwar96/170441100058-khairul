@@ -1,0 +1,1455 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Penjelasan Tentang K-Means Clustering And K-Nearest neighbor">
+      
+      
+        <link rel="canonical" href="https://khairulanwar96.github.io/170441100058-khairul/">
+      
+      
+        <meta name="author" content="M.Khairul Anwar">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>K-Means Clustering And K-Nearest neighbor</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "None", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#k-means-clustering" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://khairulanwar96.github.io/170441100058-khairul/" title="K-Means Clustering And K-Nearest neighbor" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              K-Means Clustering And K-Nearest neighbor
+            </span>
+            <span class="md-header-nav__topic">
+              K-Means data padi
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/khairulanwar96/170441100058-khairul" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    khairulanwar96/170441100058-khairul
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="." title="K-Means data padi" class="md-tabs__link md-tabs__link--active">
+        K-Means data padi
+      </a>
+    
+  </li>
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://khairulanwar96.github.io/170441100058-khairul/" title="K-Means Clustering And K-Nearest neighbor" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    K-Means Clustering And K-Nearest neighbor
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/khairulanwar96/170441100058-khairul" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    khairulanwar96/170441100058-khairul
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        K-Means data padi
+      </label>
+    
+    <a href="." title="K-Means data padi" class="md-nav__link md-nav__link--active">
+      K-Means data padi
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pengertian-algoritma-k-means-clustering" title="Pengertian Algoritma K-Means Clustering" class="md-nav__link">
+    Pengertian Algoritma K-Means Clustering
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algoritma-metode-k-means-clustering" title="Algoritma Metode K Means Clustering" class="md-nav__link">
+    Algoritma Metode K Means Clustering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contoh-k-means-clustering-dataset-padi" title="Contoh K-Means Clustering dataset padi." class="md-nav__link">
+    Contoh K-Means Clustering dataset padi.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="knn/" title="KNN data gender" class="md-nav__link">
+      KNN data gender
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pengertian-algoritma-k-means-clustering" title="Pengertian Algoritma K-Means Clustering" class="md-nav__link">
+    Pengertian Algoritma K-Means Clustering
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algoritma-metode-k-means-clustering" title="Algoritma Metode K Means Clustering" class="md-nav__link">
+    Algoritma Metode K Means Clustering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contoh-k-means-clustering-dataset-padi" title="Contoh K-Means Clustering dataset padi." class="md-nav__link">
+    Contoh K-Means Clustering dataset padi.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="k-means-clustering">K-Means Clustering<a class="headerlink" href="#k-means-clustering" title="Permanent link">&para;</a></h1>
+<h2 id="pengertian-algoritma-k-means-clustering">Pengertian Algoritma K-Means Clustering<a class="headerlink" href="#pengertian-algoritma-k-means-clustering" title="Permanent link">&para;</a></h2>
+<p>​   K-Means Clustering adalah salah satu algoritma dalam menentukan klasifikasi terhadap objek berdasarkan attribut / fitur dari objek tersebut kedalam <strong>K</strong> kluster/partisi. K adalah angka positif yang menyatakan jumlah grup/kluster/partisi terhadap objek. Pemartisian data dilakukan dengan mencari nilai jarak minimum antara data dan nilai <strong><em>centroid</em></strong> yang telah di set baik secara random atau pun dengan <strong><em>Initial Set of Centroids,</em></strong> kita juga dapat menentukan nilai centroid berdasarkan <strong>K object</strong> yang berurutan.</p>
+<h4 id="algoritma-metode-k-means-clustering">Algoritma Metode K Means Clustering<a class="headerlink" href="#algoritma-metode-k-means-clustering" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><a href="https://3.bp.blogspot.com/-_3gfYwaXcMs/VhPQuLKWxyI/AAAAAAAAA88/OEcZvg0pj6o/s1600/Algoritma%2BFlowchart%2BK%2Bmeans%2BKlastering.png"><img alt="Algoritma Metode K Means Clustering" src="https://3.bp.blogspot.com/-_3gfYwaXcMs/VhPQuLKWxyI/AAAAAAAAA88/OEcZvg0pj6o/s320/Algoritma%2BFlowchart%2BK%2Bmeans%2BKlastering.png" /></a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Algoritma Flowchart Metode Klastering K Means</td>
+</tr>
+</tbody>
+</table>
+<p>Langkah- Langkah perhitungannya adalah:</p>
+<ol>
+<li>
+<p>Menentukan Jumlah cluster data</p>
+</li>
+<li>
+<p>Tentukan titik pusat cluster</p>
+</li>
+<li>
+<p>menghitung jarak obyek dengan centroid</p>
+</li>
+<li>
+<p>kelompokan obyek </p>
+</li>
+<li>
+<p>jika kelompok data hasil perhitungan baru sama dengan hasil perhitungan kelompok data baru maka selesailah perhitungannya.</p>
+</li>
+</ol>
+<h4 id="contoh-k-means-clustering-dataset-padi">Contoh K-Means Clustering dataset padi.<a class="headerlink" href="#contoh-k-means-clustering-dataset-padi" title="Permanent link">&para;</a></h4>
+<p>Dalam tahap ini akan dijelaskan langkah-langkah pengoperasian algoritma <em>K-Means</em> secara manual:</p>
+<table>
+<thead>
+<tr>
+<th>Diketahui : Jumlah Cluster = 3,   jumlah data =12,   jumlah atribut= 2</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>NO</td>
+<td>Kota /Kab</td>
+<td>Luas Lahan</td>
+<td>Produksi</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Kab. Ponorogo</td>
+<td>66,693.00</td>
+<td>402,047.00</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Kab. Trenggalek</td>
+<td>31,136.00</td>
+<td>182,848.00</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Kab. Tulungagung</td>
+<td>49,230.00</td>
+<td>259,581.00</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Kab. Blitar</td>
+<td>50,577.00</td>
+<td>289,494.00</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Kab. Kediri</td>
+<td>51,083.00</td>
+<td>281,392.00</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Kab. Malang</td>
+<td>65,597.00</td>
+<td>464,498.00</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Kab. Lumajang</td>
+<td>72,552.00</td>
+<td>387,168.00</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Kab. Jember</td>
+<td>162,619.00</td>
+<td>964,001.00</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Kab. Banyuwangi</td>
+<td>113,609.00</td>
+<td>706,419.00</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Kab. Bondowoso</td>
+<td>61,330.00</td>
+<td>329,557.00</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Kab. Situbondo</td>
+<td>48,902.00</td>
+<td>290,954.00</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Kab. Probolinggo</td>
+<td>59,130.00</td>
+<td>311,258.00</td>
+</tr>
+</tbody>
+</table>
+<p>Tabel 2 : Tabel Sampel Dataset Padi tahun 2013 Provinsi Jawa Timur</p>
+<p><strong>Iterasi ke-1</strong></p>
+<p><strong>1.</strong>      <strong>Penentuan pusat awal cluster</strong></p>
+<table>
+<thead>
+<tr>
+<th>Di ambil data ke-8 sebagai pusat   cluster ke-1</th>
+<th>162,619</th>
+<th>964,001</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Di ambil data ke-7 sebagai pusat   cluster ke-2</td>
+<td>72,552</td>
+<td>387,168</td>
+</tr>
+<tr>
+<td>Di ambil data ke-2 sebagai pusat   cluster ke-3</td>
+<td>31,136</td>
+<td>182,848</td>
+</tr>
+</tbody>
+</table>
+<p><strong>2.</strong>      <strong>Perhitungan Jarak Pusat Cluster</strong></p>
+<p>Untuk mengukur jarak antara dengan pusat <em>Cluster</em> digunakan <em>Euclidian Distance</em>, kemudian akan didapatkan matriks jarak yaitu C1, C2 dan C3 sebagai berikut:</p>
+<p>Rumus <em>Euclidian Distance:</em> </p>
+<p><a href="https://4.bp.blogspot.com/-rb2XXOayk-Q/VhPREJBapVI/AAAAAAAAA9E/HXibvUie9nk/s1600/Rumus%2BEuclidian%2BDistance.png"><img alt="img" src="https://4.bp.blogspot.com/-rb2XXOayk-Q/VhPREJBapVI/AAAAAAAAA9E/HXibvUie9nk/s1600/Rumus%2BEuclidian%2BDistance.png" /></a></p>
+<table>
+<thead>
+<tr>
+<th><strong>NO</strong></th>
+<th><strong>Kota /Kab</strong></th>
+<th><strong>Luas Lahan</strong></th>
+<th><strong>Produksi</strong></th>
+<th><strong>C1</strong></th>
+<th><strong>C2</strong></th>
+<th><strong>C3</strong></th>
+<th><strong>Jarak Terpendek</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Kab. Ponorogo</td>
+<td>66,693</td>
+<td>402,047</td>
+<td>570,082534</td>
+<td>15,99101</td>
+<td>222,0642</td>
+<td>15,99101379</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Kab. Trenggalek</td>
+<td>31,136</td>
+<td>182,848</td>
+<td>792,1412681</td>
+<td>208,4753</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Kab. Tulungagung</td>
+<td>49,23</td>
+<td>259,581</td>
+<td>713,4876325</td>
+<td>129,701</td>
+<td>78,83747</td>
+<td>78,83746651</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Kab. Blitar</td>
+<td>50,577</td>
+<td>289,494</td>
+<td>683,7492982</td>
+<td>100,1155</td>
+<td>108,4035</td>
+<td>100,1154878</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Kab. Kediri</td>
+<td>51,083</td>
+<td>281,392</td>
+<td>691,6612799</td>
+<td>107,9328</td>
+<td>100,5425</td>
+<td>100,542542</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Kab. Malang</td>
+<td>65,597</td>
+<td>464,498</td>
+<td>508,8383982</td>
+<td>77,64213</td>
+<td>283,7504</td>
+<td>77,6421337</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Kab. Lumajang</td>
+<td>72,552</td>
+<td>387,168</td>
+<td>583,8222113</td>
+<td>0</td>
+<td>208,4753</td>
+<td>0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Kab. Jember</td>
+<td>162,619</td>
+<td>964,001</td>
+<td>0</td>
+<td>583,8222</td>
+<td>792,1413</td>
+<td>0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Kab. Banyuwangi</td>
+<td>113,609</td>
+<td>706,419</td>
+<td>262,2031022</td>
+<td>321,8802</td>
+<td>530,0268</td>
+<td>262,2031022</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Kab. Bondowoso</td>
+<td>61,33</td>
+<td>329,557</td>
+<td>642,4785216</td>
+<td>58,69379</td>
+<td>149,7839</td>
+<td>58,69378677</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Kab. Situbondo</td>
+<td>48,902</td>
+<td>290,954</td>
+<td>682,5861267</td>
+<td>99,07803</td>
+<td>109,5561</td>
+<td>99,07803135</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Kab. Probolinggo</td>
+<td>59,13</td>
+<td>311,258</td>
+<td>660,8959049</td>
+<td>77,08747</td>
+<td>131,426</td>
+<td>77,08747099</td>
+</tr>
+</tbody>
+</table>
+<p><strong>3.</strong>     <strong>Pengelompokan</strong> <strong>Data</strong></p>
+<p>Jarak hasil perhitungan akan dilakukan perbandingan dan dipilih jarak terdekat antara data dengan pusat cluster, jarak ini menunjukkan bahwa data tersebut berada dalam satu kelompok dengan pusat cluster terdekat. </p>
+<p>Berikut ini akan ditampilkan data matriks pengelompokkan group, nilai 1 berarti data tersebut berada dalam group(kelompok data).</p>
+<p>(Kelompok Data 1)</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>C1</th>
+<th>C2</th>
+<th>C3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>4.</strong>      <strong>Penentuan pusat cluster baru</strong> </p>
+<p>Setelah diketahui anggota tiap-tiap <em>cluster</em> kemudian pusat <em>cluster</em> baru dihitung berdasarkan data anggota tiap-tiap <em>cluster</em> sesuai dengan rumus pusat anggota <em>cluster</em>. Sehingga didapatkan perhitungan sebagai berikut :</p>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>Kota /Kab</th>
+<th>Luas Lahan</th>
+<th>Produksi</th>
+<th>Cluster Baru</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>C2</td>
+<td>C3</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td>Kab. Ponorogo</td>
+<td>66,693</td>
+<td>402,047</td>
+<td>138,114</td>
+<td>60,683</td>
+<td>43,81633</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Kab. Trenggalek</td>
+<td>31,136</td>
+<td>182,848</td>
+<td>835,21</td>
+<td>353,568</td>
+<td>241,2737</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Kab. Tulungagung</td>
+<td>49,23</td>
+<td>259,581</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Kab. Blitar</td>
+<td>50,577</td>
+<td>289,494</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Kab. Kediri</td>
+<td>51,083</td>
+<td>281,392</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Kab. Malang</td>
+<td>65,597</td>
+<td>464,498</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Kab. Lumajang</td>
+<td>72,552</td>
+<td>387,168</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Kab. Jember</td>
+<td>162,619</td>
+<td>964,001</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Kab. Banyuwangi</td>
+<td>113,609</td>
+<td>706,419</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Kab. Bondowoso</td>
+<td>61,33</td>
+<td>329,557</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Kab. Situbondo</td>
+<td>48,902</td>
+<td>290,954</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Kab. Probolinggo</td>
+<td>59,13</td>
+<td>311,258</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Iterasi ke-2</strong></p>
+<p><strong>5.</strong>      <strong>Ulangi langkah ke 2 (kedua) hingga posisi data tidak mengalami perubahan.</strong>  </p>
+<table>
+<thead>
+<tr>
+<th>Cluster baru yang ke-1</th>
+<th>138,114</th>
+<th>835,21</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cluster baru yang ke-2</td>
+<td>60,683</td>
+<td>353,568</td>
+<td></td>
+</tr>
+<tr>
+<td>Cluster baru yang ke-3</td>
+<td>43,81633333</td>
+<td>241,2736667</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NO</td>
+<td>Kota /Kab</td>
+<td>Luas Lahan</td>
+<td>Produksi</td>
+<td>C1</td>
+<td>C2</td>
+<td>C3</td>
+<td>Jarak Terpendek</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Kab. Ponorogo</td>
+<td>66,693</td>
+<td>402,047</td>
+<td>439,0116</td>
+<td>48,85011</td>
+<td>162,3928</td>
+<td>48,85011301</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Kab. Trenggalek</td>
+<td>31,136</td>
+<td>182,848</td>
+<td>661,0752</td>
+<td>173,258</td>
+<td>59,78586</td>
+<td>59,7858627</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Kab. Tulungagung</td>
+<td>49,23</td>
+<td>259,581</td>
+<td>582,451</td>
+<td>94,68224</td>
+<td>19,091</td>
+<td>19,09099894</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Kab. Blitar</td>
+<td>50,577</td>
+<td>289,494</td>
+<td>552,6922</td>
+<td>64,86608</td>
+<td>48,69196</td>
+<td>48,69196197</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Kab. Kediri</td>
+<td>51,083</td>
+<td>281,392</td>
+<td>560,6146</td>
+<td>72,81164</td>
+<td>40,77113</td>
+<td>40,77113089</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Kab. Malang</td>
+<td>65,597</td>
+<td>464,498</td>
+<td>377,7381</td>
+<td>111,0388</td>
+<td>224,2844</td>
+<td>111,0387873</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Kab. Lumajang</td>
+<td>72,552</td>
+<td>387,168</td>
+<td>452,8134</td>
+<td>35,63472</td>
+<td>148,6973</td>
+<td>35,63471848</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Kab. Jember</td>
+<td>162,619</td>
+<td>964,001</td>
+<td>131,1016</td>
+<td>618,8856</td>
+<td>732,4267</td>
+<td>131,1015511</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Kab. Banyuwangi</td>
+<td>113,609</td>
+<td>706,419</td>
+<td>131,1016</td>
+<td>356,7982</td>
+<td>470,3522</td>
+<td>131,1015511</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Kab. Bondowoso</td>
+<td>61,33</td>
+<td>329,557</td>
+<td>511,4496</td>
+<td>24,01972</td>
+<td>90,00375</td>
+<td>24,01971544</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Kab. Situbondo</td>
+<td>48,902</td>
+<td>290,954</td>
+<td>551,5192</td>
+<td>63,71268</td>
+<td>49,93996</td>
+<td>49,93995921</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Kab. Probolinggo</td>
+<td>59,13</td>
+<td>311,258</td>
+<td>529,8718</td>
+<td>42,33849</td>
+<td>71,64018</td>
+<td>42,33849205</td>
+</tr>
+</tbody>
+</table>
+<p>Langkah selanjutnya sama dengan langkah pada nomor 3 jarak hasil perhitungan akan dilakukan perbandingan dan dipilih jarak terdekat antara data dengan pusat <em>cluster</em>, jarak ini menunjukkan bahwa data tersebut berada dalam satu kelompok dengan pusat <em>cluster</em> terdekat.</p>
+<p>Kelompok Data 2</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>C1</th>
+<th>C2</th>
+<th>C3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>6</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>12</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Pada perhitungan ini Iterasi Berhenti pada iterasi ke-4 karena kelompok data 4 = kelompok data 3 dan hasil <em>Clustering,</em> telah mencapai stabil dan konvergen. Untuk perhitungan yang lebih rinci di lampirkan pada file Excel.</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>C1</th>
+<th>C2</th>
+<th>C3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Tabel Kelompok data 3</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>C1</th>
+<th>C2</th>
+<th>C3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>10</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Tabel Kelompok Data 4</p>
+<p>referensi :</p>
+<p><a href="https://syafrudinmtop.blogspot.com/2015/10/contoh-perhitungan-manual-kmeans-klastering.html">https://syafrudinmtop.blogspot.com/2015/10/contoh-perhitungan-manual-kmeans-klastering.html</a></p>
+<p><a href="https://ekojunaidisalam.com/2017/02/09/k-means-clustering-algorithm/">https://ekojunaidisalam.com/2017/02/09/k-means-clustering-algorithm/</a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+        
+          <a href="knn/" title="KNN data gender" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                KNN data gender
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 M.Khairul Anwar
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/khairulanwar96" class="md-footer-social__link fa fa-github-alt"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/application.8c0d971c.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"."}})</script>
+      
+    
+  </body>
+</html>

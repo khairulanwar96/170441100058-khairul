@@ -1,0 +1,886 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Penjelasan Tentang K-Means Clustering And K-Nearest neighbor">
+      
+      
+        <link rel="canonical" href="https://khairulanwar96.github.io/170441100058-khairul/knn/">
+      
+      
+        <meta name="author" content="M.Khairul Anwar">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>KNN data gender - K-Means Clustering And K-Nearest neighbor</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "None", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#pengertian-knnk-nearest-neighbor" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://khairulanwar96.github.io/170441100058-khairul/" title="K-Means Clustering And K-Nearest neighbor" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              K-Means Clustering And K-Nearest neighbor
+            </span>
+            <span class="md-header-nav__topic">
+              KNN data gender
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/khairulanwar96/170441100058-khairul" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    khairulanwar96/170441100058-khairul
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="K-Means data padi" class="md-tabs__link md-tabs__link--active">
+        K-Means data padi
+      </a>
+    
+  </li>
+
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://khairulanwar96.github.io/170441100058-khairul/" title="K-Means Clustering And K-Nearest neighbor" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    K-Means Clustering And K-Nearest neighbor
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/khairulanwar96/170441100058-khairul" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    khairulanwar96/170441100058-khairul
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="K-Means data padi" class="md-nav__link">
+      K-Means data padi
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        KNN data gender
+      </label>
+    
+    <a href="./" title="KNN data gender" class="md-nav__link md-nav__link--active">
+      KNN data gender
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pengertian-knnk-nearest-neighbor" title="Pengertian  KNN(k-nearest neighbor)" class="md-nav__link">
+    Pengertian  KNN(k-nearest neighbor)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terdapat-beberapa-jenis-algoritme-pencarian-tetangga-terdekat-diantaranya" title="Terdapat beberapa jenis algoritme pencarian tetangga terdekat, diantaranya:" class="md-nav__link">
+    Terdapat beberapa jenis algoritme pencarian tetangga terdekat, diantaranya:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementasi-knn" title="Implementasi KNN" class="md-nav__link">
+    Implementasi KNN
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mengimpor-dan-mengumpulkan-data" title="Mengimpor dan mengumpulkan data" class="md-nav__link">
+    Mengimpor dan mengumpulkan data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menghapus-kolom-gender-yang-untuk-menampilkan-data-numerik" title="Menghapus kolom "gender" yang untuk menampilkan data numerik" class="md-nav__link">
+    Menghapus kolom "gender" yang untuk menampilkan data numerik
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menggabungkan-string-frame-dan-di-tampung-menggunakan-array" title="Menggabungkan string "frame" dan di tampung menggunakan array" class="md-nav__link">
+    Menggabungkan string "frame" dan di tampung menggunakan array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menampikan-akurasi-data-gender" title="Menampikan akurasi data "gender"" class="md-nav__link">
+    Menampikan akurasi data "gender"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menggabungkan-string-frame-dan-di-tampung-menggunakan-array_1" title="Menggabungkan string "frame" dan di tampung menggunakan array" class="md-nav__link">
+    Menggabungkan string "frame" dan di tampung menggunakan array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#membuat-fungsi-sederhana-dengan-beberapa-argument-secara-anonymous" title="Membuat fungsi sederhana dengan beberapa argument secara anonymous" class="md-nav__link">
+    Membuat fungsi sederhana dengan beberapa argument secara anonymous
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menampilkan-data-training-gender" title="Menampilkan data training "Gender"" class="md-nav__link">
+    Menampilkan data training "Gender"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menampilkan-training-acuracy" title="Menampilkan training acuracy" class="md-nav__link">
+    Menampilkan training acuracy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hasil-implementasi" title="Hasil Implementasi" class="md-nav__link">
+    Hasil Implementasi
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pengertian-knnk-nearest-neighbor" title="Pengertian  KNN(k-nearest neighbor)" class="md-nav__link">
+    Pengertian  KNN(k-nearest neighbor)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terdapat-beberapa-jenis-algoritme-pencarian-tetangga-terdekat-diantaranya" title="Terdapat beberapa jenis algoritme pencarian tetangga terdekat, diantaranya:" class="md-nav__link">
+    Terdapat beberapa jenis algoritme pencarian tetangga terdekat, diantaranya:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementasi-knn" title="Implementasi KNN" class="md-nav__link">
+    Implementasi KNN
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mengimpor-dan-mengumpulkan-data" title="Mengimpor dan mengumpulkan data" class="md-nav__link">
+    Mengimpor dan mengumpulkan data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menghapus-kolom-gender-yang-untuk-menampilkan-data-numerik" title="Menghapus kolom "gender" yang untuk menampilkan data numerik" class="md-nav__link">
+    Menghapus kolom "gender" yang untuk menampilkan data numerik
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menggabungkan-string-frame-dan-di-tampung-menggunakan-array" title="Menggabungkan string "frame" dan di tampung menggunakan array" class="md-nav__link">
+    Menggabungkan string "frame" dan di tampung menggunakan array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menampikan-akurasi-data-gender" title="Menampikan akurasi data "gender"" class="md-nav__link">
+    Menampikan akurasi data "gender"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menggabungkan-string-frame-dan-di-tampung-menggunakan-array_1" title="Menggabungkan string "frame" dan di tampung menggunakan array" class="md-nav__link">
+    Menggabungkan string "frame" dan di tampung menggunakan array
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#membuat-fungsi-sederhana-dengan-beberapa-argument-secara-anonymous" title="Membuat fungsi sederhana dengan beberapa argument secara anonymous" class="md-nav__link">
+    Membuat fungsi sederhana dengan beberapa argument secara anonymous
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menampilkan-data-training-gender" title="Menampilkan data training "Gender"" class="md-nav__link">
+    Menampilkan data training "Gender"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menampilkan-training-acuracy" title="Menampilkan training acuracy" class="md-nav__link">
+    Menampilkan training acuracy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hasil-implementasi" title="Hasil Implementasi" class="md-nav__link">
+    Hasil Implementasi
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>KNN data gender</h1>
+                
+                <h3 id="pengertian-knnk-nearest-neighbor">Pengertian  KNN(k-nearest neighbor)<a class="headerlink" href="#pengertian-knnk-nearest-neighbor" title="Permanent link">&para;</a></h3>
+<p>Algoritme <em>k-nearest neighbor</em> (k-NN atau KNN) adalah sebuah metode untuk melakukan <a href="https://id.wikipedia.org/wiki/Pengenalan_pola">klasifikasi</a> terhadap objek berdasarkan data pembelajaran yang jaraknya paling dekat dengan objek tersebut. </p>
+<p>Data pembelajaran diproyeksikan ke ruang berdimensi banyak,  dimana masing-masing dimensi merepresentasikan fitur dari data. Ruang  ini dibagi menjadi bagian-bagian berdasarkan klasifikasi data  pembelajaran. Sebuah titik pada ruang ini ditandai kelas <em>c</em> jika kelas <em>c</em> merupakan klasifikasi yang paling banyak ditemui pada <em>k</em> buah tetangga terdekat titk tersebut. Dekat atau jauhnya tetangga biasanya dihitung berdasarkan jarak Euclidean. </p>
+<p>Pada fase pembelajaran, algoritme ini hanya melakukan penyimpanan  vektor-vektor fitur dan klasifikasi dari data pembelajaran. Pada fase  klasifikasi, fitur-fitur yang sama dihitung untuk data test (yang  klasifikasinya tidak diketahui). Jarak dari vektor yang baru ini  terhadap seluruh vektor data pembelajaran dihitung, dan sejumlah <em>k</em>  buah yang paling dekat diambil. Titik yang baru klasifikasinya  diprediksikan termasuk pada klasifikasi terbanyak dari titik-titik  tersebut. </p>
+<p>Nilai <em>k</em> yang terbaik untuk algoritme ini tergantung pada data; secara umumnya, nilai <em>k</em> yang tinggi akan mengurangi efek <em>noise</em> pada klasifikasi, tetapi membuat batasan antara setiap klasifikasi menjadi lebih kabur. Nilai <em>k</em>  yang bagus dapat dipilih dengan optimasi parameter, misalnya dengan  menggunakan cross-validation. Kasus khusus di mana klasifikasi  diprediksikan berdasarkan data pembelajaran yang paling dekat (dengan  kata lain, <em>k</em> = 1) disebut algoritme <em>nearest neighbor</em>. </p>
+<p>Ketepatan algoritme k-NN ini sangat dipengaruhi oleh ada atau  tidaknya fitur-fitur yang tidak relevan, atau jika bobot fitur tersebut  tidak setara dengan relevansinya terhadap klasifikasi. Riset terhadap  algoritme ini sebagian besar membahas bagaimana memilih dan memberi  bobot terhadap fitur, agar performa klasifikasi menjadi lebih baik. </p>
+<h4 id="terdapat-beberapa-jenis-algoritme-pencarian-tetangga-terdekat-diantaranya">Terdapat beberapa jenis algoritme pencarian tetangga terdekat, diantaranya:<a class="headerlink" href="#terdapat-beberapa-jenis-algoritme-pencarian-tetangga-terdekat-diantaranya" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Linear scan</li>
+<li>Pohon kd</li>
+<li>Pohon Balltree</li>
+<li>Pohon metrik</li>
+<li>Locally-sensitive hashing (LSH)</li>
+</ul>
+<p>Algoritme k-NN ini memiliki konsistensi yang kuat. Ketika jumlah data mendekati tak hingga, algoritme ini menjamin <em>error rate</em> yang tidak lebih dari dua kali <em>Bayes error rate</em> (<em>error rate</em> minimum untuk distribusi data tertentu). </p>
+<h3 id="implementasi-knn">Implementasi KNN<a class="headerlink" href="#implementasi-knn" title="Permanent link">&para;</a></h3>
+<p>Pada data "Male Female Detection By Height Weight".</p>
+<h5 id="mengimpor-dan-mengumpulkan-data">Mengimpor dan mengumpulkan data<a class="headerlink" href="#mengimpor-dan-mengumpulkan-data" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">
+data=pd.read_csv('../input/weight-height.csv')
+data.head(10)import numpy as np
+from collections import Counter
+import matplotlib.pyplot as plt
+import pandas as pd
+
+data=pd.read_csv('../input/weight-height.csv')
+data.head(10)</code></pre>
+
+<h5 id="menghapus-kolom-gender-yang-untuk-menampilkan-data-numerik">Menghapus kolom "gender" yang untuk menampilkan data numerik<a class="headerlink" href="#menghapus-kolom-gender-yang-untuk-menampilkan-data-numerik" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">df=data
+columns=['Gender']
+df = df.drop(columns, axis=1)
+df.head(10)</code></pre>
+
+<h5 id="menggabungkan-string-frame-dan-di-tampung-menggunakan-array">Menggabungkan string "frame" dan di tampung menggunakan array<a class="headerlink" href="#menggabungkan-string-frame-dan-di-tampung-menggunakan-array" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">Xm=df[0:25]
+Xf=df[5001:5026]
+frame=[Xm,Xf]
+X_train=pd.concat(frame)
+X_train=np.array(X_train)
+print(X_train)
+X_train.shape</code></pre>
+
+<pre class="codehilite"><code class="language-python">lbl=data['Gender']
+ym=lbl[0:25]
+yf=lbl[5001:5026]
+frames=[ym,yf]
+Y_train=pd.concat(frames)
+Y_train=np.array(Y_train)
+print(Y_train)
+Y_train.shape</code></pre>
+
+<pre class="codehilite"><code class="language-python">label=data['Gender']
+lb=label[400:410]
+lc=label[9000:9010]
+frames=[lb,lc]
+Y=pd.concat(frames)
+Y=np.array(Y)
+print(Y)</code></pre>
+
+<h5 id="menampikan-akurasi-data-gender">Menampikan akurasi data "gender"<a class="headerlink" href="#menampikan-akurasi-data-gender" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">x = data['Height']
+y=data['Weight']
+male=x[0:25]
+female=x[5001:5026]
+wm=y[0:25]
+wf=y[5001:5026]
+plt.scatter(male,wm, color='b')
+plt.scatter(female,wf,color='g')
+plt.xlabel('Male')
+plt.ylabel('Female')
+plt.show()</code></pre>
+
+<h5 id="menggabungkan-string-frame-dan-di-tampung-menggunakan-array_1">Menggabungkan string "frame" dan di tampung menggunakan array<a class="headerlink" href="#menggabungkan-string-frame-dan-di-tampung-menggunakan-array_1" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">testx=df[400:410]
+testy=df[9000:9010]
+frames=[testx,testy]
+X=pd.concat(frames)
+X=np.array(X)
+print(X)
+X.shape</code></pre>
+
+<h5 id="membuat-fungsi-sederhana-dengan-beberapa-argument-secara-anonymous">Membuat fungsi sederhana dengan beberapa argument secara anonymous<a class="headerlink" href="#membuat-fungsi-sederhana-dengan-beberapa-argument-secara-anonymous" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">def predict(input_feature_set, k):
+    distances = []
+    z=0
+    for training_feature_set in X_train:
+        group=Y_train[z]
+        #print("Group=",group)
+        #print("Training Feature=",training_feature_set)
+        euclidean_distance = np.linalg.norm(np.array(input_feature_set) - np.array(training_feature_set))
+        #print("Distance=",euclidean_distance)
+        distances.append([euclidean_distance, group])
+        z=z+1
+        #print(z)
+
+    nearest = sorted(distances)[:k]
+    #print("Sorted=",nearest)
+    votes=[]
+    #votes = [d[1] for d in nearest] 
+    for d in nearest:
+        votes.append(d[1])
+    #print(votes)
+    #prediction = Counter(votes).most_common(1)[0][0]
+    item={}
+    for i in votes:
+        if i in item:
+            item[i]=item[i]+1
+        else:
+            item[i]=1
+
+    #finding most common class        
+    m=0
+    for k in item:
+        if item[k]&gt;m:
+            m=item[k]
+
+    for k in item:
+        if item[k]==m:
+            index=k
+
+    prediction=index
+
+
+    return prediction</code></pre>
+
+<h5 id="menampilkan-data-training-gender">Menampilkan data training "Gender"<a class="headerlink" href="#menampilkan-data-training-gender" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">#Training
+toutput=[]
+for j in X_train:
+    predicted=predict(j,3)
+    toutput.append(predicted)
+print("Output=",toutput)
+print(len(toutput))</code></pre>
+
+<h5 id="menampilkan-training-acuracy">Menampilkan training acuracy<a class="headerlink" href="#menampilkan-training-acuracy" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">c=0
+for p in range(0,50):
+        if toutput[p]==Y_train[p]:
+            c=c+1
+result=(c/50.0)*100
+print("Training Accuracy=",result,"%")</code></pre>
+
+<p>Menampilkan prediksi pada data "Gender"</p>
+<pre class="codehilite"><code class="language-python">output=[]
+for j in X:
+    predicted=predict(j,3)
+    output.append(predicted)
+print("Output=",output)</code></pre>
+
+<p>Menampilkan Testing acuracy</p>
+<pre class="codehilite"><code class="language-python">c=0
+for p in range(0,20):
+        if output[p]==Y[p]:
+            c=c+1
+result=(c/20.0)*100
+print("Testing Accuracy=",result,"%")</code></pre>
+
+<h3 id="hasil-implementasi">Hasil Implementasi<a class="headerlink" href="#hasil-implementasi" title="Permanent link">&para;</a></h3>
+<p>[[ 73.84701702 241.89356318]
+ [ 68.78190405 162.31047252]
+ [ 74.11010539 212.74085556]
+ [ 71.7309784  220.0424703 ]
+ [ 69.88179586 206.34980062]
+ [ 67.25301569 152.21215576]
+ [ 68.78508125 183.9278886 ]
+ [ 68.34851551 167.97111049]
+ [ 67.01894966 175.9294404 ]
+ [ 63.45649398 156.39967639]
+ [ 71.19538228 186.60492556]
+ [ 71.64080512 213.74116949]
+ [ 64.76632913 167.12746107]
+ [ 69.2830701  189.44618139]
+ [ 69.24373223 186.43416802]
+ [ 67.6456197  172.18693006]
+ [ 72.41831663 196.02850633]
+ [ 63.97432572 172.88347021]
+ [ 69.6400599  185.98395757]
+ [ 67.93600485 182.42664801]
+ [ 67.91505019 174.11592908]
+ [ 69.43943987 197.73142161]
+ [ 66.14913196 149.17356601]
+ [ 75.20597361 228.76178062]
+ [ 67.89319634 162.00665185]
+ [ 65.23001251 141.3058226 ]
+ [ 63.36900376 131.04140269]
+ [ 64.47999743 128.17151122]
+ [ 61.79309615 129.78140705]
+ [ 65.96801895 156.80208261]
+ [ 62.85037864 114.96903825]
+ [ 65.65215644 165.08300121]
+ [ 61.89023374 111.67619921]
+ [ 63.67786815 104.15155964]
+ [ 68.10117224 166.57566076]
+ [ 61.79887853 106.23368699]
+ [ 63.37145896 128.11816912]
+ [ 58.89588635 101.68261336]
+ [ 58.4382491   98.19262093]
+ [ 60.80979868 126.91546328]
+ [ 70.12865283 151.25427035]
+ [ 62.25742965 115.79739341]
+ [ 61.73509022 107.86687236]
+ [ 63.05955669 145.58992915]
+ [ 62.28683837 139.52270767]
+ [ 61.82747755 122.76616667]
+ [ 66.34753722 157.38096482]
+ [ 65.32063203 145.03737562]
+ [ 66.1038728  148.64518257]
+ [ 64.52718203 132.68086824]]</p>
+<p>['Male' 'Male' 'Male' 'Male' 'Male' 'Male' 'Male' 'Male' 'Male' 'Male'
+ 'Male' 'Male' 'Male' 'Male' 'Male' 'Male' 'Male' 'Male' 'Male' 'Male'
+ 'Male' 'Male' 'Male' 'Male' 'Male' 'Female' 'Female' 'Female' 'Female'
+ 'Female' 'Female' 'Female' 'Female' 'Female' 'Female' 'Female' 'Female'
+ 'Female' 'Female' 'Female' 'Female' 'Female' 'Female' 'Female' 'Female'
+ 'Female' 'Female' 'Female' 'Female' 'Female']
+['Male' 'Male' 'Male' 'Male' 'Male' 'Male' 'Male' 'Male' 'Male' 'Male'
+ 'Female' 'Female' 'Female' 'Female' 'Female' 'Female' 'Female' 'Female'
+ 'Female' 'Female']</p>
+<p><img alt="" src="../assets/images/Capture.PNG" /></p>
+<p>[[ 69.97090362 202.86329303]
+ [ 65.31346154 163.35733152]
+ [ 71.90600544 217.02771464]
+ [ 66.23390404 183.16123246]
+ [ 65.81494282 166.58361051]
+ [ 72.84494786 205.25088915]
+ [ 70.94944345 189.70308882]
+ [ 71.34380763 218.5863364 ]
+ [ 71.05566416 203.13943303]
+ [ 61.92554729 139.90507032]
+ [ 58.52542646 107.79249645]
+ [ 60.34078108 111.07775447]
+ [ 61.43391285  97.05854929]
+ [ 65.47590249 154.4408869 ]
+ [ 60.48444501 121.79779334]
+ [ 62.00031639 117.04835397]
+ [ 59.66765209 114.3868654 ]
+ [ 63.80329944 124.81306876]
+ [ 62.86838051 132.69486866]
+ [ 66.40655275 161.17621832]]</p>
+<p>Output= ['Male', 'Male', 'Male', 'Male', 'Male', 'Male', 'Male', 'Male', 'Male', 'Female', 'Male', 'Male', 'Female', 'Male', 'Male', 'Male', 'Male', 'Male', 'Male', 'Male', 'Male', 'Male', 'Male', 'Male', 'Male', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Male', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female', 'Female']
+50
+Training Accuracy= 94.0 %
+Output= ['Male', 'Male', 'Male', 'Male', 'Female', 'Male', 'Male', 'Male', 'Male', 'Female', 'Female', 'Female', 'Female', 'Male', 'Female', 'Female', 'Female', 'Female', 'Female', 'Male']
+Testing Accuracy= 80.0 %</p>
+<p>Referensi :</p>
+<p><a href="https://id.wikipedia.org/wiki/KNN">https://id.wikipedia.org/wiki/KNN</a></p>
+<p><a href="https://www.kaggle.com/shawon10/male-female-detection-by-height-weight-knn">https://www.kaggle.com/shawon10/male-female-detection-by-height-weight-knn</a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href=".." title="K-Means data padi" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                K-Means data padi
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 M.Khairul Anwar
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/khairulanwar96" class="md-footer-social__link fa fa-github-alt"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.8c0d971c.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>
