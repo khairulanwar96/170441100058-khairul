@@ -2,12 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
      <loc>https://khairulanwar96.github.io/170441100058-khairul/</loc>
-     <lastmod>2019-05-15</lastmod>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
     <url>
      <loc>https://khairulanwar96.github.io/170441100058-khairul/knn/</loc>
-     <lastmod>2019-05-15</lastmod>
+     <lastmod>2019-05-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>https://khairulanwar96.github.io/170441100058-khairul/decision/</loc>
+     <lastmod>2019-05-23</lastmod>
      <changefreq>daily</changefreq>
     </url>
 </urlset>

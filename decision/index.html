@@ -1,0 +1,891 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Penjelasan Tentang K-Means Clustering And K-Nearest neighbor">
+      
+      
+        <link rel="canonical" href="https://khairulanwar96.github.io/170441100058-khairul/decision/">
+      
+      
+        <meta name="author" content="M.Khairul Anwar">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>Decision Tree - K-Means Clustering And K-Nearest neighbor</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "None", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#mengenal-decision-tree-dan-manfaatnya" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://khairulanwar96.github.io/170441100058-khairul/" title="K-Means Clustering And K-Nearest neighbor" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              K-Means Clustering And K-Nearest neighbor
+            </span>
+            <span class="md-header-nav__topic">
+              Decision Tree
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/khairulanwar96/170441100058-khairul" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    khairulanwar96/170441100058-khairul
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="K-Means" class="md-tabs__link md-tabs__link--active">
+        K-Means
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://khairulanwar96.github.io/170441100058-khairul/" title="K-Means Clustering And K-Nearest neighbor" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    K-Means Clustering And K-Nearest neighbor
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/khairulanwar96/170441100058-khairul" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    khairulanwar96/170441100058-khairul
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="K-Means" class="md-nav__link">
+      K-Means
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../knn/" title="KNN" class="md-nav__link">
+      KNN
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Decision Tree
+      </label>
+    
+    <a href="./" title="Decision Tree" class="md-nav__link md-nav__link--active">
+      Decision Tree
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implemetasi-decision-tree" title="Implemetasi Decision Tree" class="md-nav__link">
+    Implemetasi Decision Tree
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataset-titanic" title="'Dataset Titanic'" class="md-nav__link">
+    'Dataset Titanic'
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#titanic-dengan-pohon-keputusan" title="Titanic dengan pohon keputusan" class="md-nav__link">
+    Titanic dengan pohon keputusan
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-2" title="in [2]" class="md-nav__link">
+    in [2]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-2" title="out [2]" class="md-nav__link">
+    out [2]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-5" title="in [5]" class="md-nav__link">
+    in [5]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-5" title="out [5]" class="md-nav__link">
+    out [5]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-7" title="in [7]" class="md-nav__link">
+    in [7]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-7" title="out [7]" class="md-nav__link">
+    out [7]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-8" title="in [8]" class="md-nav__link">
+    in [8]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-8" title="out [8]" class="md-nav__link">
+    out [8]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-9" title="in [9]" class="md-nav__link">
+    in [9]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-9" title="out [9]" class="md-nav__link">
+    out [9]
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#implemetasi-decision-tree" title="Implemetasi Decision Tree" class="md-nav__link">
+    Implemetasi Decision Tree
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dataset-titanic" title="'Dataset Titanic'" class="md-nav__link">
+    'Dataset Titanic'
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#titanic-dengan-pohon-keputusan" title="Titanic dengan pohon keputusan" class="md-nav__link">
+    Titanic dengan pohon keputusan
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#in-2" title="in [2]" class="md-nav__link">
+    in [2]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-2" title="out [2]" class="md-nav__link">
+    out [2]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-5" title="in [5]" class="md-nav__link">
+    in [5]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-5" title="out [5]" class="md-nav__link">
+    out [5]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-7" title="in [7]" class="md-nav__link">
+    in [7]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-7" title="out [7]" class="md-nav__link">
+    out [7]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-8" title="in [8]" class="md-nav__link">
+    in [8]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-8" title="out [8]" class="md-nav__link">
+    out [8]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#in-9" title="in [9]" class="md-nav__link">
+    in [9]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#out-9" title="out [9]" class="md-nav__link">
+    out [9]
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="mengenal-decision-tree-dan-manfaatnya">Mengenal Decision Tree dan Manfaatnya<a class="headerlink" href="#mengenal-decision-tree-dan-manfaatnya" title="Permanent link">&para;</a></h1>
+<p>Setiap  orang tentu menginginkan sebuah pengambilan keputusan yang tepat dan  efisien tak terkecuali sebuah perusahaan. Untuk itu banyak sekali  perusahaan yang membutuhkan suatu media seperti <em>Business Intellegence</em> guna membantu dalam pengambilan keputusan yang tepat.</p>
+<p>Namun, hal tersebut tidak akan berarti tanpa adanya konsep <em>decision tree</em> (pohon keputusan). <em>Decision tree</em> adalah salah satu metode klasifikasi yang paling populer, karena mudah untuk diinterpretasi oleh manusia. <em>Decision tree</em> adalah model prediksi menggunakan struktur pohon atau struktur berhirarki.</p>
+<p>Konsep dari pohon keputusan adalah mengubah data menjadi <em>decision tree</em> dan aturan-aturan keputusan. Manfaat utama dari penggunaan <em>decision tree</em> adalah kemampuannya untuk mem-<em>break down</em>  proses pengambilan keputusan yang kompleks menjadi lebih simple,  sehingga pengambil keputusan akan lebih menginterpretasikan solusi dari  permasalahan.</p>
+<p>Nama lain dari <em>decision tree</em> adalah CART (<em>Classification and Regression Tree</em>). Dimana metode ini merupakan gabungan dari dua jenis pohon, yaitu <em>classification tree</em> dan juga <em>regression tree</em>. Untuk memudahkan, berikut ilustrasi dari keduanya.</p>
+<p><img alt="" src="../assets/images/tree1.png" /></p>
+<p>Classfication Tree. Credit: Pronoz</p>
+<p>Untuk gambar diatas merupakan contoh dari classification tree, sedangkan gambar dibawah merupakan contoh dari regression tree.</p>
+<p><img alt="" src="../assets/images/tree2.png" /></p>
+<p>Regression Tree. Credit: Brandewinder.com</p>
+<p><em>Decision tree</em>  juga berguna untuk mengeksplorasi data, menemukan hubungan tersembunyi  antara sejumlah calon variabel input dengan sebuah variabel target. <em>Decision tree</em>  memadukan antara eksplorasi data dan pemodelan, sehingga sangat bagus  sebagai langkah awal dalam proses pemodelan bahkan ketika dijadikan  sebagai model akhir dari beberapa teknik lain.</p>
+<p>Dalam  beberapa aplikasi, akurasi dari sebuah klasifikasi atau prediksi adalah  satu-satunya hal yang ditonjolkan dalam metode ini, misalnya sebuah  perusahaan <em>direct mail</em> membuat  sebuah model yang akurat untuk memprediksi anggota mana yang berpotensi  untuk merespon permintaan, tanpa memperhatikan bagaimana atau mengapa  model tersebut bekerja.</p>
+<p><img alt="" src="../assets/images/tree3.png" /></p>
+<p>Decision Tree atau CART. Credit: Towards Data Science</p>
+<p>Kelebihan  lain dari metode ini adalah mampu mengeliminasi perhitungan atau  data-data yang kiranya tidak diperlukan. Sebab, sampel yang ada biasanya  hanya diuji berdasarkan kriteria atau kelas tertentu saja.</p>
+<p>Meski memiliki banyak kelebihan, namun bukan berarti metode ini tidak memiliki kekurangan. <em>Decision tree</em>  ini bisa terjadi overlap, terutama ketika kelas dan kriteria yang  digunakan sangat banyak tentu saja dapat meningkatkan waktu pengambilan  keputusan sesuai dengan jumlah memori yang dibutuhkan.</p>
+<p>Dalam hal akumulasi, <em>decision tree</em> juga seringkali mengalami kendala eror terutama dalam jumlah besar. Selain itu, terdapat pula kesulitan dalam mendesain <em>decision tree</em> yang optimal. Apalagi mengingat kualitas keputusan yang didapatkan dari metode <em>decision tree</em> sangat tergantung pada bagaimana pohon tersebut didesain.</p>
+<p>Terlepas dari kekurangan dan kelebihan dari <em>decision tree</em>, metode ini banyak digunakan lebih lanjut dalam berbagai pengolahan data. Mulai dari data mining dan juga <em>machine learning</em>. Dalam dunia kerja, <em>decision tree</em> sendiri sangat berguna untuk penilaian <em>credit scoring.</em> Jika anda pernah mengajukan kredit yang diproses secara instan, nah anda sudah mempunyai pengalaman dari <em>decision tree</em>.</p>
+<h3 id="implemetasi-decision-tree">Implemetasi Decision Tree<a class="headerlink" href="#implemetasi-decision-tree" title="Permanent link">&para;</a></h3>
+<h5 id="dataset-titanic">'Dataset Titanic'<a class="headerlink" href="#dataset-titanic" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python"># This Python 3 environment comes with many helpful analytics libraries installed
+# It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
+# For example, here's several helpful packages to load in 
+
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+
+# Input data files are available in the "../input/" directory.
+# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory
+
+import os
+print(os.listdir("../input"))
+
+# Any results you write to the current directory are saved as output.</code></pre>
+
+<h4 id="titanic-dengan-pohon-keputusan">Titanic dengan pohon keputusan<a class="headerlink" href="#titanic-dengan-pohon-keputusan" title="Permanent link">&para;</a></h4>
+<p>Menggunakan DecisionTreeClassifier sklearn untuk membuat gambar pohon untuk selamat dari titanic</p>
+<h5 id="in-2">in [2]<a class="headerlink" href="#in-2" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">import numpy as np
+from sklearn.tree import DecisionTreeClassifier, export_graphviz
+from sklearn.model_selection import train_test_split
+
+import graphviz
+from subprocess import check_call
+
+from IPython.display import Image as PImage
+from PIL import Image, ImageDraw, ImageFont
+
+df = pd.read_csv('../input/train.csv', error_bad_lines=False)
+
+df.head(3)</code></pre>
+
+<h5 id="out-2">out [2]<a class="headerlink" href="#out-2" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>PassengerId</th>
+<th>Survived</th>
+<th>Pclass</th>
+<th>Name</th>
+<th>Sex</th>
+<th>Age</th>
+<th>SibSp</th>
+<th>Parch</th>
+<th>Ticket</th>
+<th>Fare</th>
+<th>Cabin</th>
+<th>Embarked</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>Braund, Mr. Owen Harris</td>
+<td>male</td>
+<td>22.0</td>
+<td>1</td>
+<td>0</td>
+<td>A/5 21171</td>
+<td>7.2500</td>
+<td>NaN</td>
+<td>S</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+<td>female</td>
+<td>38.0</td>
+<td>1</td>
+<td>0</td>
+<td>PC 17599</td>
+<td>71.2833</td>
+<td>C85</td>
+<td>C</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>3</td>
+<td>Heikkinen, Miss. Laina</td>
+<td>female</td>
+<td>26.0</td>
+<td>0</td>
+<td>0</td>
+<td>STON/O2. 3101282</td>
+<td>7.9250</td>
+<td>NaN</td>
+<td>S</td>
+</tr>
+</tbody>
+</table>
+<p>Sebelum kita melanjutkan, mari kita lakukan sedikit persiapan data.</p>
+<p>Mari kita lepaskan NaN apa pun - ada opsi lain tentu saja untuk NaN, tetapi kami tertarik untuk membuat pohon keputusan yang tidak membuat penggolong paling akurat yang pernah ada</p>
+<pre class="codehilite"><code class="language-python">df = df.dropna(axis=1)
+df = df.drop(['Name', 'Ticket'], axis=1)</code></pre>
+
+<p>Sekarang pohon keputusan yang akan kita gunakan tidak bekerja dengan baik dengan data kategorikal, jadi mari kita gunakan fungsi get_dummies panda untuk membuat satu pengodean panas dari kolom yang merepotkan</p>
+<p>Kami juga akan membagi data menjadi set pelatihan dan tes</p>
+<pre class="codehilite"><code class="language-python">X = pd.get_dummies(df.drop('Survived', axis=1))
+Y = pd.get_dummies(df['Survived'])
+
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random_state=42)</code></pre>
+
+<p>Hanya karena ketertarikan, ini adalah bagaimana get_dummies mengubah data</p>
+<h5 id="in-5">in [5]<a class="headerlink" href="#in-5" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">X_train.head(3)</code></pre>
+
+<h5 id="out-5">out [5]<a class="headerlink" href="#out-5" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>PassengerId</th>
+<th>Pclass</th>
+<th>SibSp</th>
+<th>Parch</th>
+<th>Fare</th>
+<th>Sex_female</th>
+<th>Sex_male</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>7</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>51.8625</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>718</td>
+<td>719</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>15.5000</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>685</td>
+<td>686</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>41.5792</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Jadi mari kita latih classifier!</p>
+<p>Seperti yang Anda lihat di bawah ini, kami telah menetapkan max_depth = 3 dan min_samples_split = 20 untuk classifier ini. Itu untuk mencegah overfitting</p>
+<pre class="codehilite"><code class="language-python">clf = DecisionTreeClassifier(max_depth=3, min_samples_split=20)
+clf = clf.fit(X_train, y_train)</code></pre>
+
+<h5 id="in-7">in [7]<a class="headerlink" href="#in-7" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">clf.score(X_test, y_test)</code></pre>
+
+<h5 id="out-7">out [7]<a class="headerlink" href="#out-7" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">0.8135593220338984</code></pre>
+
+<h5 id="in-8">in [8]<a class="headerlink" href="#in-8" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">with open("tree1.dot", 'w') as f:
+     f = export_graphviz(clf,
+                              out_file=f,
+                              max_depth = 3,
+                              impurity = True,
+                              feature_names = list(X_train),
+                              class_names = ['Died', 'Survived'],
+                              rounded = True,
+                              filled= True )
+
+check_call(['dot','-Tpng','tree1.dot','-o','tree1.png'])</code></pre>
+
+<h5 id="out-8">out [8]<a class="headerlink" href="#out-8" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">0</code></pre>
+
+<h5 id="in-9">in [9]<a class="headerlink" href="#in-9" title="Permanent link">&para;</a></h5>
+<pre class="codehilite"><code class="language-python">img = Image.open("tree1.png")
+draw = ImageDraw.Draw(img)
+img.save('sample-out.png')
+PImage("sample-out.png")</code></pre>
+
+<h5 id="out-9">out [9]<a class="headerlink" href="#out-9" title="Permanent link">&para;</a></h5>
+<p><img alt="" src="../assets/images/sample-out.png" /></p>
+<p>Referensi :</p>
+<p><a href="https://medium.com/iykra/mengenal-decision-tree-dan-manfaatnya-b98cf3cf6a8d">https://medium.com/iykra/mengenal-decision-tree-dan-manfaatnya-b98cf3cf6a8d</a></p>
+<p><a href="https://www.kaggle.com/hamishdickson/playing-with-decision-tree-classifiers/data">https://www.kaggle.com/hamishdickson/playing-with-decision-tree-classifiers/data</a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../knn/" title="KNN" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                KNN
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2016 - 2019 M.Khairul Anwar
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/khairulanwar96" class="md-footer-social__link fa fa-github-alt"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.8c0d971c.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>

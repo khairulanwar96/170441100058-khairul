@@ -1,0 +1,33 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label="Sex_female <= 0.5\ngini = 0.467\nsamples = 596\nvalue = [[222, 374]\n[374, 222]]", fillcolor="#e581390f"] ;
+1 [label="Fare <= 52.277\ngini = 0.304\nsamples = 390\nvalue = [[73, 317]\n[317, 73]]", fillcolor="#e5813963"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="Parch <= 0.5\ngini = 0.272\nsamples = 345\nvalue = [[56, 289]\n[289, 56]]", fillcolor="#e5813974"] ;
+1 -> 2 ;
+3 [label="gini = 0.241\nsamples = 299\nvalue = [[42, 257]\n[257, 42]]", fillcolor="#e5813983"] ;
+2 -> 3 ;
+4 [label="gini = 0.423\nsamples = 46\nvalue = [[14, 32]\n[32, 14]]", fillcolor="#e5813926"] ;
+2 -> 4 ;
+5 [label="SibSp <= 1.5\ngini = 0.47\nsamples = 45\nvalue = [[17, 28]\n[28, 17]]", fillcolor="#e581390e"] ;
+1 -> 5 ;
+6 [label="gini = 0.497\nsamples = 37\nvalue = [[17, 20]\n[20, 17]]", fillcolor="#e5813900"] ;
+5 -> 6 ;
+7 [label="gini = 0.0\nsamples = 8\nvalue = [[0, 8]\n[8, 0]]", fillcolor="#e58139ff"] ;
+5 -> 7 ;
+8 [label="Pclass <= 2.5\ngini = 0.4\nsamples = 206\nvalue = [[149, 57]\n[57, 149]]", fillcolor="#e5813932"] ;
+0 -> 8 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+9 [label="Fare <= 149.035\ngini = 0.072\nsamples = 107\nvalue = [[103, 4]\n[4, 103]]", fillcolor="#e58139da"] ;
+8 -> 9 ;
+10 [label="gini = 0.042\nsamples = 94\nvalue = [[92, 2]\n[2, 92]]", fillcolor="#e58139ea"] ;
+9 -> 10 ;
+11 [label="gini = 0.26\nsamples = 13\nvalue = [[11, 2]\n[2, 11]]", fillcolor="#e581397a"] ;
+9 -> 11 ;
+12 [label="Fare <= 23.35\ngini = 0.498\nsamples = 99\nvalue = [[46, 53]\n[53, 46]]", fillcolor="#e5813900"] ;
+8 -> 12 ;
+13 [label="gini = 0.494\nsamples = 81\nvalue = [[45, 36]\n[36, 45]]", fillcolor="#e5813902"] ;
+12 -> 13 ;
+14 [label="gini = 0.105\nsamples = 18\nvalue = [[1, 17]\n[17, 1]]", fillcolor="#e58139c9"] ;
+12 -> 14 ;
+}
